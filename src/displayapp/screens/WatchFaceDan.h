@@ -84,6 +84,8 @@ namespace Pinetime {
         lv_obj_t* stepValue;
         lv_obj_t* notificationIcon;
         lv_obj_t* line_icons;
+        lv_obj_t* weatherIcon;
+        lv_obj_t* temperature;
 
         BatteryIcon batteryIcon;
 
