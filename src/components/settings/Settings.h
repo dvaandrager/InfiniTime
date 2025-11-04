@@ -156,16 +156,6 @@ namespace Pinetime {
         return settings.PTS.weatherEnable;
       };
 
-      void SetPrideFlag(PrideFlag prideFlag) {
-        if (prideFlag != settings.prideFlag)
-          settingsChanged = true;
-        settings.prideFlag = prideFlag;
-      };
-
-      PrideFlag GetPrideFlag() const {
-        return settings.prideFlag;
-      };
-
       void SetAppMenu(uint8_t menu) {
         appMenu = menu;
       };
