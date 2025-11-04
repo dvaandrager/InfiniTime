@@ -12,6 +12,7 @@
 #include "components/heartrate/HeartRateController.h"
 #include "components/motion/MotionController.h"
 #include "components/settings/Settings.h"
+#include "displayapp/screens/WeatherSymbols.h"
 using namespace Pinetime::Applications::Screens;
 
 WatchFaceDan::WatchFaceDan(Controllers::DateTime& dateTimeController,
