@@ -13,6 +13,7 @@
 #include "components/motion/MotionController.h"
 #include "components/settings/Settings.h"
 #include "displayapp/screens/WeatherSymbols.h"
+#include "components/ble/SimpleWeatherService.h"
 using namespace Pinetime::Applications::Screens;
 
 WatchFaceDan::WatchFaceDan(Controllers::DateTime& dateTimeController,
