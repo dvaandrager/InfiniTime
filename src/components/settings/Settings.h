@@ -344,8 +344,6 @@ namespace Pinetime {
 
         PineTimeStyle PTS;
 
-        PrideFlag prideFlag = PrideFlag::Gay;
-
         WatchFaceInfineat watchFaceInfineat;
 
         std::bitset<5> wakeUpMode {0};
