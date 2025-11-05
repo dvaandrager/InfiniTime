@@ -122,7 +122,7 @@ namespace Pinetime {
                                                      controllers.settingsController,
                                                      controllers.heartRateController,
                                                      controllers.motionController,
-                                                     controllers.filesystem
+                                                     controllers.filesystem,
                                                      *controllers.weatherController);
       };
 
