@@ -285,12 +285,12 @@ void WatchFaceDan::Refresh() {
       tm* tmTime = std::localtime(&ttTime);
 
       // TODO: When we start using C++20, use std::chrono::year::is_leap
-      int daysInCurrentYear = (year % 4 == 0 && year % 100 != 0) || year % 400 == 0 ? 366 : 365;
-      uint16_t daysTillEndOfYearNumber = daysInCurrentYear - dayOfYear;
+//      int daysInCurrentYear = (year % 4 == 0 && year % 100 != 0) || year % 400 == 0 ? 366 : 365;
+//      uint16_t daysTillEndOfYearNumber = daysInCurrentYear - dayOfYear;
 
       char buffer[8];
       strftime(buffer, 8, weekNumberFormat, tmTime);
-      uint8_t weekNumber = atoi(buffer);
+//      uint8_t weekNumber = atoi(buffer);
 
       lv_label_set_text_fmt(label_day_of_week, "%s", dateTimeController.DayOfWeekShortToString());
 //      lv_label_set_text_fmt(label_day_of_year, "%3d-%3d", dayOfYear, daysTillEndOfYearNumber);
