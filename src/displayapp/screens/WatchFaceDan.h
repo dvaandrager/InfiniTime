@@ -100,6 +100,7 @@ namespace Pinetime {
         Controllers::Settings& settingsController;
         Controllers::HeartRateController& heartRateController;
         Controllers::MotionController& motionController;
+        Controllers::SimpleWeatherService& weatherService;
 
         lv_task_t* taskRefresh;
         lv_font_t* font_dot40 = nullptr;
@@ -121,7 +122,8 @@ namespace Pinetime {
                                                      controllers.settingsController,
                                                      controllers.heartRateController,
                                                      controllers.motionController,
-                                                     controllers.filesystem);
+                                                     controllers.filesystem
+                                                     *controllers.weatherController);
       };
 
       static bool IsAvailable(Pinetime::Controllers::FS& filesystem) {
