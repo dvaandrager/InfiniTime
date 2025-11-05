@@ -36,7 +36,8 @@ namespace Pinetime {
                                  Controllers::Settings& settingsController,
                                  Controllers::HeartRateController& heartRateController,
                                  Controllers::MotionController& motionController,
-                                 Controllers::FS& filesystem);
+                                 Controllers::FS& filesystem,
+                                 Controllers::SimpleWeatherService& weather);
         ~WatchFaceDan() override;
 
         void Refresh() override;
