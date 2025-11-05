@@ -265,7 +265,7 @@ void WatchFaceDan::Refresh() {
       uint16_t year = dateTimeController.Year();
       Controllers::DateTime::Months month = dateTimeController.Month();
       uint8_t day = dateTimeController.Day();
-      int dayOfYear = dateTimeController.DayOfYear();
+//      int dayOfYear = dateTimeController.DayOfYear();
       if (settingsController.GetClockType() == Controllers::Settings::ClockType::H24) {
         // 24h mode: ddmmyyyy, first DOW=Monday;
         lv_label_set_text_fmt(label_date, "%Y-%m-%d", year, month, day);
