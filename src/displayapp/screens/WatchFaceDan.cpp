@@ -75,7 +75,7 @@ WatchFaceDan::WatchFaceDan(Controllers::DateTime& dateTimeController,
   lv_obj_align(notificationIcon, bleIcon, LV_ALIGN_OUT_LEFT_MID, -5, 0);
 
   label_day_of_week = lv_label_create(lv_scr_act(), nullptr);
-  lv_obj_align(label_day_of_week, lv_scr_act(), LV_ALIGN_IN_TOP_LEFT, 5, 22);
+  lv_obj_align(label_day_of_week, lv_scr_act(), LV_ALIGN_IN_TOP_LEFT, 5, 25);
   lv_obj_set_style_local_text_color(label_day_of_week, LV_LABEL_PART_MAIN, LV_STATE_DEFAULT, color_text);
   lv_obj_set_style_local_text_font(label_day_of_week, LV_LABEL_PART_MAIN, LV_STATE_DEFAULT, font_dot40);
   lv_label_set_text_static(label_day_of_week, "SUN");
@@ -120,14 +120,14 @@ WatchFaceDan::WatchFaceDan(Controllers::DateTime& dateTimeController,
   weatherIcon = lv_label_create(lv_scr_act(), nullptr);
   lv_obj_set_style_local_text_color(weatherIcon, LV_LABEL_PART_MAIN, LV_STATE_DEFAULT, color_text);
   lv_obj_set_style_local_text_font(weatherIcon, LV_LABEL_PART_MAIN, LV_STATE_DEFAULT, &fontawesome_weathericons);
-  lv_label_set_text(weatherIcon, "");
-  lv_obj_align(weatherIcon, nullptr, LV_ALIGN_IN_TOP_MID, -20, 50);
+  lv_label_set_text(weatherIcon, "sun");
+  lv_obj_align(weatherIcon, nullptr, LV_ALIGN_IN_TOP_LEFT, 100, 25);
   lv_obj_set_auto_realign(weatherIcon, true);
 
   temperature = lv_label_create(lv_scr_act(), nullptr);
   lv_obj_set_style_local_text_color(temperature, LV_LABEL_PART_MAIN, LV_STATE_DEFAULT, color_text);
-  lv_label_set_text(temperature, "");
-  lv_obj_align(temperature, nullptr, LV_ALIGN_IN_TOP_MID, 20, 50);
+  lv_label_set_text(temperature, "12");
+  lv_obj_align(temperature, nullptr, LV_ALIGN_IN_TOP_LEFT, 150, 25);
 
   label_date = lv_label_create(lv_scr_act(), nullptr);
   lv_obj_align(label_date, lv_scr_act(), LV_ALIGN_IN_TOP_LEFT, 10, 70);
@@ -260,7 +260,7 @@ void WatchFaceDan::Refresh() {
 
     currentDate = std::chrono::time_point_cast<std::chrono::days>(currentDateTime.Get());
     if (currentDate.IsUpdated()) {
-      const char* weekNumberFormat = "%V";
+//      const char* weekNumberFormat = "%V";
 
       uint16_t year = dateTimeController.Year();
       Controllers::DateTime::Months month = dateTimeController.Month();
@@ -268,15 +268,15 @@ void WatchFaceDan::Refresh() {
 //      int dayOfYear = dateTimeController.DayOfYear();
       if (settingsController.GetClockType() == Controllers::Settings::ClockType::H24) {
         // 24h mode: ddmmyyyy, first DOW=Monday;
-        lv_label_set_text_fmt(label_date, "%Y-%m-%d", year, month, day);
-        weekNumberFormat = "%V"; // Replaced by the week number of the year (Monday as the first day of the week) as a decimal number
+        lv_label_set_text_fmt(label_date, "%d-%02d-%02d", year, month, day);
+//        weekNumberFormat = "%V"; // Replaced by the week number of the year (Monday as the first day of the week) as a decimal number
                                  // [01,53]. If the week containing 1 January has four or more days in the new year, then it is considered
                                  // week 1. Otherwise, it is the last week of the previous year, and the next week is week 1. Both January
                                  // 4th and the first Thursday of January are always in week 1. [ tm_year, tm_wday, tm_yday]
       } else {
         // 12h mode: mmddyyyy, first DOW=Sunday;
         lv_label_set_text_fmt(label_date, "%3d-%2d", month, day);
-        weekNumberFormat = "%U"; // Replaced by the week number of the year as a decimal number [00,53]. The first Sunday of January is the
+//        weekNumberFormat = "%U"; // Replaced by the week number of the year as a decimal number [00,53]. The first Sunday of January is the
                                  // first day of week 1; days in the new year before this are in week 0. [ tm_year, tm_wday, tm_yday]
       }
 
@@ -288,8 +288,8 @@ void WatchFaceDan::Refresh() {
 //      int daysInCurrentYear = (year % 4 == 0 && year % 100 != 0) || year % 400 == 0 ? 366 : 365;
 //      uint16_t daysTillEndOfYearNumber = daysInCurrentYear - dayOfYear;
 
-      char buffer[8];
-      strftime(buffer, 8, weekNumberFormat, tmTime);
+//      char buffer[8];
+//      strftime(buffer, 8, weekNumberFormat, tmTime);
 //      uint8_t weekNumber = atoi(buffer);
 
       lv_label_set_text_fmt(label_day_of_week, "%s", dateTimeController.DayOfWeekShortToString());
