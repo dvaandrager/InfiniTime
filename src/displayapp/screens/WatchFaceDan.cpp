@@ -127,6 +127,7 @@ WatchFaceDan::WatchFaceDan(Controllers::DateTime& dateTimeController,
   temperature = lv_label_create(lv_scr_act(), nullptr);
   lv_obj_set_style_local_text_color(temperature, LV_LABEL_PART_MAIN, LV_STATE_DEFAULT, color_text);
   lv_label_set_text(temperature, "12");
+  lv_obj_set_style_local_text_font(temperature, LV_LABEL_PART_MAIN, LV_STATE_DEFAULT, font_segment40);
   lv_obj_align(temperature, nullptr, LV_ALIGN_IN_TOP_LEFT, 150, 25);
 
   label_date = lv_label_create(lv_scr_act(), nullptr);
@@ -324,6 +325,25 @@ void WatchFaceDan::Refresh() {
     lv_obj_realign(stepValue);
     lv_obj_realign(stepIcon);
   }
+
+  currentWeather = weatherService.Current();
+  if (currentWeather.IsUpdated()) {
+    auto optCurrentWeather = currentWeather.Get();
+    if (optCurrentWeather) {
+      int16_t temp = optCurrentWeather->temperature.Celsius();
+      char tempUnit = 'C';
+      if (settingsController.GetWeatherFormat() == Controllers::Settings::WeatherFormat::Imperial) {
+        temp = optCurrentWeather->temperature.Fahrenheit();
+        tempUnit = 'F';
+      }
+      lv_label_set_text_fmt(temperature, "%d°%c", temp, tempUnit);
+      lv_label_set_text(weatherIcon, Symbols::GetSymbol(optCurrentWeather->iconId));
+    } else {
+      lv_label_set_text_static(temperature, "");
+      lv_label_set_text(weatherIcon, "");
+    }
+    lv_obj_realign(temperature);
+    lv_obj_realign(weatherIcon);
 }
 
 bool WatchFaceDan::IsAvailable(Pinetime::Controllers::FS& filesystem) {
