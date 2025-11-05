@@ -80,17 +80,17 @@ WatchFaceDan::WatchFaceDan(Controllers::DateTime& dateTimeController,
   lv_obj_set_style_local_text_font(label_day_of_week, LV_LABEL_PART_MAIN, LV_STATE_DEFAULT, font_dot40);
   lv_label_set_text_static(label_day_of_week, "SUN");
 
-  label_week_number = lv_label_create(lv_scr_act(), nullptr);
-  lv_obj_align(label_week_number, lv_scr_act(), LV_ALIGN_IN_TOP_LEFT, 5, 64);
-  lv_obj_set_style_local_text_color(label_week_number, LV_LABEL_PART_MAIN, LV_STATE_DEFAULT, color_text);
-  lv_obj_set_style_local_text_font(label_week_number, LV_LABEL_PART_MAIN, LV_STATE_DEFAULT, font_dot40);
-  lv_label_set_text_static(label_week_number, "WK26");
+//  label_week_number = lv_label_create(lv_scr_act(), nullptr);
+//  lv_obj_align(label_week_number, lv_scr_act(), LV_ALIGN_IN_TOP_LEFT, 5, 64);
+//  lv_obj_set_style_local_text_color(label_week_number, LV_LABEL_PART_MAIN, LV_STATE_DEFAULT, color_text);
+//  lv_obj_set_style_local_text_font(label_week_number, LV_LABEL_PART_MAIN, LV_STATE_DEFAULT, font_dot40);
+//  lv_label_set_text_static(label_week_number, "WK26");
 
-  label_day_of_year = lv_label_create(lv_scr_act(), nullptr);
-  lv_obj_align(label_day_of_year, lv_scr_act(), LV_ALIGN_IN_TOP_LEFT, 100, 30);
-  lv_obj_set_style_local_text_color(label_day_of_year, LV_LABEL_PART_MAIN, LV_STATE_DEFAULT, color_text);
-  lv_obj_set_style_local_text_font(label_day_of_year, LV_LABEL_PART_MAIN, LV_STATE_DEFAULT, font_segment40);
-  lv_label_set_text_static(label_day_of_year, "181-184");
+//  label_day_of_year = lv_label_create(lv_scr_act(), nullptr);
+//  lv_obj_align(label_day_of_year, lv_scr_act(), LV_ALIGN_IN_TOP_LEFT, 100, 30);
+//  lv_obj_set_style_local_text_color(label_day_of_year, LV_LABEL_PART_MAIN, LV_STATE_DEFAULT, color_text);
+//  lv_obj_set_style_local_text_font(label_day_of_year, LV_LABEL_PART_MAIN, LV_STATE_DEFAULT, font_segment40);
+//  lv_label_set_text_static(label_day_of_year, "181-184");
 
   lv_style_init(&style_line);
   lv_style_set_line_width(&style_line, LV_STATE_DEFAULT, 2);
@@ -107,10 +107,10 @@ WatchFaceDan::WatchFaceDan(Controllers::DateTime& dateTimeController,
   lv_obj_add_style(line_icons, LV_LINE_PART_MAIN, &style_line);
   lv_obj_align(line_icons, nullptr, LV_ALIGN_IN_TOP_RIGHT, -10, 18);
 
-  line_day_of_week_number = lv_line_create(lv_scr_act(), nullptr);
-  lv_line_set_points(line_day_of_week_number, line_day_of_week_number_points, 4);
-  lv_obj_add_style(line_day_of_week_number, LV_LINE_PART_MAIN, &style_border);
-  lv_obj_align(line_day_of_week_number, nullptr, LV_ALIGN_IN_TOP_LEFT, 0, 8);
+//  line_day_of_week_number = lv_line_create(lv_scr_act(), nullptr);
+//  lv_line_set_points(line_day_of_week_number, line_day_of_week_number_points, 4);
+//  lv_obj_add_style(line_day_of_week_number, LV_LINE_PART_MAIN, &style_border);
+//  lv_obj_align(line_day_of_week_number, nullptr, LV_ALIGN_IN_TOP_LEFT, 0, 8);
 
   line_day_of_year = lv_line_create(lv_scr_act(), nullptr);
   lv_line_set_points(line_day_of_year, line_day_of_year_points, 3);
@@ -118,22 +118,22 @@ WatchFaceDan::WatchFaceDan(Controllers::DateTime& dateTimeController,
   lv_obj_align(line_day_of_year, nullptr, LV_ALIGN_IN_TOP_RIGHT, 0, 60);
 
   weatherIcon = lv_label_create(lv_scr_act(), nullptr);
-  lv_obj_set_style_local_text_color(weatherIcon, LV_LABEL_PART_MAIN, LV_STATE_DEFAULT, lv_color_hex(0x999999));
+  lv_obj_set_style_local_text_color(weatherIcon, LV_LABEL_PART_MAIN, LV_STATE_DEFAULT, color_text);
   lv_obj_set_style_local_text_font(weatherIcon, LV_LABEL_PART_MAIN, LV_STATE_DEFAULT, &fontawesome_weathericons);
   lv_label_set_text(weatherIcon, "");
   lv_obj_align(weatherIcon, nullptr, LV_ALIGN_IN_TOP_MID, -20, 50);
   lv_obj_set_auto_realign(weatherIcon, true);
 
   temperature = lv_label_create(lv_scr_act(), nullptr);
-  lv_obj_set_style_local_text_color(temperature, LV_LABEL_PART_MAIN, LV_STATE_DEFAULT, lv_color_hex(0x999999));
+  lv_obj_set_style_local_text_color(temperature, LV_LABEL_PART_MAIN, LV_STATE_DEFAULT, color_text);
   lv_label_set_text(temperature, "");
   lv_obj_align(temperature, nullptr, LV_ALIGN_IN_TOP_MID, 20, 50);
 
   label_date = lv_label_create(lv_scr_act(), nullptr);
-  lv_obj_align(label_date, lv_scr_act(), LV_ALIGN_IN_TOP_LEFT, 100, 70);
+  lv_obj_align(label_date, lv_scr_act(), LV_ALIGN_IN_TOP_LEFT, 10, 70);
   lv_obj_set_style_local_text_color(label_date, LV_LABEL_PART_MAIN, LV_STATE_DEFAULT, color_text);
   lv_obj_set_style_local_text_font(label_date, LV_LABEL_PART_MAIN, LV_STATE_DEFAULT, font_segment40);
-  lv_label_set_text_static(label_date, "6-30");
+  lv_label_set_text_static(label_date, "2025-06-30");
 
   line_date = lv_line_create(lv_scr_act(), nullptr);
   lv_line_set_points(line_date, line_date_points, 3);
@@ -268,7 +268,7 @@ void WatchFaceDan::Refresh() {
       int dayOfYear = dateTimeController.DayOfYear();
       if (settingsController.GetClockType() == Controllers::Settings::ClockType::H24) {
         // 24h mode: ddmmyyyy, first DOW=Monday;
-        lv_label_set_text_fmt(label_date, "%3d-%2d", day, month);
+        lv_label_set_text_fmt(label_date, "%Y-%m-%d", year, month, day);
         weekNumberFormat = "%V"; // Replaced by the week number of the year (Monday as the first day of the week) as a decimal number
                                  // [01,53]. If the week containing 1 January has four or more days in the new year, then it is considered
                                  // week 1. Otherwise, it is the last week of the previous year, and the next week is week 1. Both January
@@ -293,12 +293,12 @@ void WatchFaceDan::Refresh() {
       uint8_t weekNumber = atoi(buffer);
 
       lv_label_set_text_fmt(label_day_of_week, "%s", dateTimeController.DayOfWeekShortToString());
-      lv_label_set_text_fmt(label_day_of_year, "%3d-%3d", dayOfYear, daysTillEndOfYearNumber);
-      lv_label_set_text_fmt(label_week_number, "WK%02d", weekNumber);
+//      lv_label_set_text_fmt(label_day_of_year, "%3d-%3d", dayOfYear, daysTillEndOfYearNumber);
+//      lv_label_set_text_fmt(label_week_number, "WK%02d", weekNumber);
 
       lv_obj_realign(label_day_of_week);
-      lv_obj_realign(label_day_of_year);
-      lv_obj_realign(label_week_number);
+//      lv_obj_realign(label_day_of_year);
+//      lv_obj_realign(label_week_number);
       lv_obj_realign(label_date);
     }
   }
