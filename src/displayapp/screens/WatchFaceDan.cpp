@@ -23,7 +23,8 @@ WatchFaceDan::WatchFaceDan(Controllers::DateTime& dateTimeController,
                                                    Controllers::Settings& settingsController,
                                                    Controllers::HeartRateController& heartRateController,
                                                    Controllers::MotionController& motionController,
-                                                   Controllers::FS& filesystem)
+                                                   Controllers::FS& filesystem,
+                                                   Controllers::SimpleWeatherService& weatherService)
   : currentDateTime {{}},
     batteryIcon(false),
     dateTimeController {dateTimeController},
@@ -32,7 +33,8 @@ WatchFaceDan::WatchFaceDan(Controllers::DateTime& dateTimeController,
     notificatioManager {notificatioManager},
     settingsController {settingsController},
     heartRateController {heartRateController},
-    motionController {motionController} {
+    motionController {motionController}, 
+    weatherService {weatherService} {
 
   lfs_file f = {};
   if (filesystem.FileOpen(&f, "/fonts/lv_font_dots_40.bin", LFS_O_RDONLY) >= 0) {
