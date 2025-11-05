@@ -344,8 +344,8 @@ void WatchFaceDan::Refresh() {
     }
     lv_obj_realign(temperature);
     lv_obj_realign(weatherIcon);
+  }
 }
-
 bool WatchFaceDan::IsAvailable(Pinetime::Controllers::FS& filesystem) {
   lfs_file file = {};
 
