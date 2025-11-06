@@ -11,6 +11,7 @@ void NotificationManager::Push(NotificationManager::Notification&& notif) {
   notif.id = GetNextId();
   notif.valid = true;
   newNotification = true;
+  notif.timeArrived = std::chrono::system_clock::to_time_t(dateTimeController.CurrentDateTime());
   if (beginIdx > 0) {
     --beginIdx;
   } else {
