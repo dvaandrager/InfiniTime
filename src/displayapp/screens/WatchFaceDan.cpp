@@ -244,17 +244,26 @@ void WatchFaceDan::Refresh() {
     if (notificationState.Get()) {
       lv_obj_set_style_local_text_color(notificationIcon, LV_LABEL_PART_MAIN, LV_STATE_DEFAULT, lv_color_hex(0x00FF00));
       lv_label_set_text_static(notificationIcon, NotificationIcon::GetIcon(true));
-    } else if (notificatioManager.NbNotifications() > 0) {
+      if (notificatioManager.NbNotifications() >1) {
+        lv_obj_set_style_local_text_color(numbernotifications, LV_LABEL_PART_MAIN, LV_STATE_DEFAULT, lv_color_hex(0x00FF00));
+        lv_label_set_text_fmt(numbernotifications, "%d", notificatioManager.NbNotifications());
+      }
+    } else if (notificatioManager.NbNotifications() = 1) {
       lv_obj_set_style_local_text_color(notificationIcon, LV_LABEL_PART_MAIN, LV_STATE_DEFAULT, lv_color_hex(0xFFFFFF));
       lv_label_set_text_static(notificationIcon, NotificationIcon::GetIcon(true));
+      lv_obj_set_style_local_text_color(numbernotifications, LV_LABEL_PART_MAIN, LV_STATE_DEFAULT, lv_color_hex(0xFFFFFF));
+      lv_label_set_text_fmt(numbernotifications, "", notificatioManager.NbNotifications());
+    } else if (notificatioManager.NbNotifications() > 1) {
+      lv_obj_set_style_local_text_color(notificationIcon, LV_LABEL_PART_MAIN, LV_STATE_DEFAULT, lv_color_hex(0xFFFFFF));
+      lv_label_set_text_static(notificationIcon, NotificationIcon::GetIcon(true));
+      lv_obj_set_style_local_text_color(numbernotifications, LV_LABEL_PART_MAIN, LV_STATE_DEFAULT, lv_color_hex(0xFFFFFF));
+      lv_label_set_text_fmt(numbernotifications, "%d", notificatioManager.NbNotifications());
     } else {
       lv_label_set_text_static(notificationIcon, NotificationIcon::GetIcon(false));
+      lv_label_set_text_fmt(numbernotifications, "", notificatioManager.NbNotifications());
     }
   }
   lv_obj_realign(notificationIcon);
-
-  //as part of troubleshooting, show the number of notifications available, not just the icon
-  lv_label_set_text_fmt(numbernotifications, "%d", notificatioManager.NbNotifications());
   lv_obj_realign(numbernotifications);
   
   currentDateTime = std::chrono::time_point_cast<std::chrono::minutes>(dateTimeController.CurrentDateTime());
