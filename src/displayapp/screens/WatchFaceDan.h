@@ -90,6 +90,7 @@ namespace Pinetime {
         lv_obj_t* line_icons;
         lv_obj_t* weatherIcon;
         lv_obj_t* temperature;
+        lv_obj_t* numbernotifications;
 
         BatteryIcon batteryIcon;
 
