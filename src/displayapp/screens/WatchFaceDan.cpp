@@ -78,7 +78,7 @@ WatchFaceDan::WatchFaceDan(Controllers::DateTime& dateTimeController,
 
   numbernotifications = lv_label_create(lv_scr_act(), nullptr);
   lv_obj_set_style_local_text_color(numbernotifications, LV_LABEL_PART_MAIN, LV_STATE_DEFAULT, color_text);
-  lv_label_set_text_static(numbernotifications, 6);
+  lv_label_set_text_static(numbernotifications, "6");
   lv_obj_align(numbernotifications, notificationIcon, LV_ALIGN_OUT_LEFT_MID, -5, 0);
 
   label_day_of_week = lv_label_create(lv_scr_act(), nullptr);
