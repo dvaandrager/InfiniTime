@@ -254,7 +254,7 @@ void WatchFaceDan::Refresh() {
   lv_obj_realign(notificationIcon);
 
   //as part of troubleshooting, show the number of notifications available, not just the icon
-  lv_label_set_text_static(numbernotifications, notificatioManager.NbNotifications();
+  lv_label_set_text_static(numbernotifications, notificatioManager.NbNotifications());
   lv_obj_realign(numbernotifications);
   
   currentDateTime = std::chrono::time_point_cast<std::chrono::minutes>(dateTimeController.CurrentDateTime());
