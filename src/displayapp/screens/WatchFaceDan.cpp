@@ -129,8 +129,8 @@ WatchFaceDan::WatchFaceDan(Controllers::DateTime& dateTimeController,
   temperature = lv_label_create(lv_scr_act(), nullptr);
   lv_obj_set_style_local_text_color(temperature, LV_LABEL_PART_MAIN, LV_STATE_DEFAULT, color_text);
   lv_label_set_text(temperature, "12");
-  lv_obj_set_style_local_text_font(temperature, LV_LABEL_PART_MAIN, LV_STATE_DEFAULT, font_segment40);
-  lv_obj_align(temperature, weatherIcon, LV_ALIGN_OUT_RIGHT_MID, -5, 0);
+  lv_obj_set_style_local_text_font(temperature, LV_LABEL_PART_MAIN, LV_STATE_DEFAULT, font_dot40);
+  lv_obj_align(temperature, weatherIcon, LV_ALIGN_OUT_RIGHT_MID, 5, 0);
 
   label_date = lv_label_create(lv_scr_act(), nullptr);
   lv_obj_align(label_date, lv_scr_act(), LV_ALIGN_IN_TOP_LEFT, 20, 70);
@@ -352,8 +352,8 @@ void WatchFaceDan::Refresh() {
       lv_label_set_text_static(temperature, "");
       lv_label_set_text(weatherIcon, "");
     }
-    lv_obj_realign(temperature);
     lv_obj_realign(weatherIcon);
+    lv_obj_realign(temperature);
   }
 }
 bool WatchFaceDan::IsAvailable(Pinetime::Controllers::FS& filesystem) {
